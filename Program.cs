@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -70,18 +70,23 @@ namespace L7_2
         {
             
         }
-        public ProductRange(int n, int produceNumber, string title, double weight, int productionCost, int sellingPrice)
+        public int Product_Number;
+        public string _Title;
+        public double _Weight;
+        public int Production_Cost;
+        public int Selling_Price;
+        public ProductRange(int produceNumber, string title, double weight, int productionCost, int sellingPrice)
         {
             if (produceNumber < 0) throw new System.Exception("Produce number is incorrect.");
-            else ProductNumber[n] = produceNumber;
+            else this.Product_Number = produceNumber;
             if (title.Length == 0) throw new System.Exception("Title is not found.");
-            else Title[n] = title;
+            else this._Title = title;
             if (weight < 0) throw new System.Exception("Weight is incorrect.");
-            else Weight[n] = weight;
+            else this._Weight = weight;
             if (productionCost < 0) throw new System.Exception("Production cost is incorrect.");
-            else ProductionCost[n] = productionCost;
+            else this.Production_Cost = productionCost;
             if (sellingPrice < 0) throw new System.Exception("Selling price is incorrect.");
-            else SellingPrice[n] = sellingPrice;
+            else this.Selling_Price = sellingPrice;
         }
         public static int Sizing()
         {
@@ -255,7 +260,7 @@ namespace L7_2
                             Weight[i - 1] = Double.Parse(pagg);
                             ProductionCost[i - 1] = Int32.Parse(coss);
                             SellingPrice[i - 1] = Int32.Parse(numm);
-                            prod.Add(new ProductRange(i - 1, Int32.Parse(prodd), worr, Double.Parse(pagg), Int32.Parse(coss), Int32.Parse(numm)));
+                            prod.Add(new ProductRange(Int32.Parse(prodd), worr, Double.Parse(pagg), Int32.Parse(coss), Int32.Parse(numm)));
                             numm = "";
                             prodd = "";
                             worr = "";
@@ -292,7 +297,7 @@ namespace L7_2
             Weight[Weight.Length - 1] = weight;
             ProductionCost[ProductionCost.Length - 1] = productionCost;
             SellingPrice[SellingPrice.Length - 1] = sellingPrice;
-            prod.Add(new ProductRange(ProductNumber.Length - 1, produceNumber, title, weight, productionCost, sellingPrice));
+            prod.Add(new ProductRange( produceNumber, title, weight, productionCost, sellingPrice));
             Console.WriteLine(Heading);
             f.WriteLine(Heading);
             for (int i = 0; i < ProductNumber.Length; i++)
@@ -330,7 +335,7 @@ namespace L7_2
             Weight[n] = weight;
             ProductionCost[n] = productionCost;
             SellingPrice[n] = sellingPrice;
-            prod.Insert(n, new ProductRange(n, produceNumber, title, weight, productionCost, sellingPrice));
+            prod.Insert(n, new ProductRange(produceNumber, title, weight, productionCost, sellingPrice));
             Console.WriteLine(Heading);
             f.WriteLine(Heading);
             for (int i = 0; i < ProductNumber.Length; i++)
